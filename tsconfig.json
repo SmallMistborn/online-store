@@ -3,18 +3,19 @@
     "outDir": "./dist/",
     "noImplicitAny": true,
     "module": "ESNext",
-    "target": "es5",
+    "target": "ESNext",
     "jsx": "react-jsx",
     "allowJs": true,
-    "moduleResolution": "node",
+    "moduleResolution": "Node",
     "esModuleInterop": true,
     "allowSyntheticDefaultImports": true,
+    "skipLibCheck": true,
     "baseUrl": ".",
-  },
-  "ts-node": {
-    "compilerOptions": {
-      "module": "ESNext"
+    "resolveJsonModule": true,
+    "isolatedModules": false,
+    "paths": {
+      "@/*": ["src/*"]
     }
   },
-
+  "include": ["src", "global.d.ts", "vite.config.ts"]
 }

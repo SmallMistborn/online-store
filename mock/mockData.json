@@ -1,0 +1,13 @@
+{
+  "users": [
+    { "id": 1, "name": "Иван", "email": "ivan@example.com" },
+    { "id": 2, "name": "Мария", "email": "maria@example.com" }
+  ],
+  "posts": [
+    { "id": 1, "title": "Пост 1", "content": "Это первый тестовый пост" },
+    { "id": 2, "title": "Пост 2", "content": "Это второй тестовый пост" }
+  ],
+  "auth": {
+    "token": "mock-token-1234"
+  }
+}
