@@ -8,7 +8,7 @@ const Header: FC = () => (
     {/*// <header>*/}
         <Link to="/" className={styles.header__logo}>Logo</Link>
         <Navbar />
-            {/*<div>llogo</div>*/}
+
     </header>
 );
 

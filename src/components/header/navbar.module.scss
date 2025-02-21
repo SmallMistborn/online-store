@@ -1,0 +1,76 @@
+.navbar {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+
+  nav {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+  }
+
+  // Поисковая строка
+  &__search {
+    input {
+      padding: 8px 12px;
+      border: 1px solid #ccc;
+      outline: none;
+
+      &:focus {
+        border-color: #007bff;
+      }
+    }
+  }
+
+  // Основной список навигации
+  &__list {
+    display: flex;
+    list-style: none;
+    gap: 20px;
+
+    li {
+      a {
+        text-decoration: none;
+        color: #333;
+        font-weight: 500;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #007bff;
+        }
+      }
+    }
+  }
+
+  // Иконки справа (Профиль, Избранное, Корзина)
+  ul {
+    display: flex;
+    align-items: center;
+    list-style: none;
+    gap: 15px;
+
+    span {
+      font-weight: bold;
+      color: #333;
+    }
+
+    .navbar__item {
+      a {
+        display: flex;
+        align-items: center;
+
+        .navbar__icon {
+          width: 24px;
+          height: 24px;
+          transition: transform 0.2s ease;
+
+          &:hover {
+            transform: scale(1.1);
+          }
+        }
+      }
+    }
+  }
+}

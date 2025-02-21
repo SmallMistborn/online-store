@@ -22,6 +22,8 @@ const routes: RouteObject[] = [
     { path: CATALOG_ROUTE, element: <PublicRoute><CatalogPage /></PublicRoute> },
     { path: ADMIN_ROUTE, element: <PrivateRoute><AdminPage /></PrivateRoute> },
     { path: CART_ROUTE, element: <PrivateRoute><Cart /></PrivateRoute> },
+
+
 ];
 
 export default routes;

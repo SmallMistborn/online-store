@@ -1,0 +1,43 @@
+.product_hero__wrapper{
+  width: 100%;
+  background-color: #f1f1f1;
+  display: flex;
+}
+
+.product_hero_img__wrapper{
+  position: relative;
+  z-index: 1;
+  width: 50%;
+  justify-content: flex-start;
+  align-items: center;
+}
+
+.product_hero_title__wrapper{
+  width: 50%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  gap: 2rem;
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+.product_hero__title{
+  font-weight: bold;
+  font-size: 24px;
+
+}
+
+.product_hero__text{
+  font-size: 16px;
+}
+
+.product_hero__button{
+  font-size: 20px;
+  color: #ffffff;
+  background-color: #DB9969;
+  border: none;
+  border-radius: 10px;
+  padding: 12px 62px;
+}
