@@ -8,11 +8,13 @@ import { isAuth } from "@/router/routes";
 import {LOGIN_ROUTE} from "@/utils/constants/RouteNames";
 import {ReactNode} from "react";
 
+
 interface PrivateRouteProps {
     children: ReactNode;
 }
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
+
     return isAuth ? children : <Navigate to={LOGIN_ROUTE} />;
 };
 

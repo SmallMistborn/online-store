@@ -1,0 +1,7 @@
+{
+  "furniture": [
+    { "id": 1,
+      "title": "barselona",
+      "image": "/images/furniture/barselona.png" }
+  ]
+}

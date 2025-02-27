@@ -1,0 +1,29 @@
+[
+  {
+    "login": "admin",
+    "password": "admin123",
+    "token": "",
+    "isAdmin": true
+  },
+
+  {
+    "login": "asdf",
+    "password": "12345q",
+    "token": "",
+    "isAdmin": false
+  },
+
+  {
+    "login": "misha",
+    "password": "zxc",
+    "token": "",
+    "isAdmin": false
+  },
+
+  {
+    "login": "123",
+    "password": "11223q",
+    "token": "",
+    "isAdmin": false
+  }
+]

@@ -4,6 +4,7 @@ import routes from "@/router/routes";
 import Header from "@/components/header/Header";
 import Footer from "@/components/footer/Footer";
 
+
 interface User {
     id: number;
     name: string;
@@ -15,48 +16,37 @@ const App = () => {
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
 
-    useEffect(() => {
-        fetch("/api/users")
-            .then((res) => {
-                if (!res.ok) {
-                    throw new Error("Ошибка загрузки данных");
-                }
-                return res.json();
-            })
-            .then((data) => {
-                setUsers(data);
-                setLoading(false);
-            })
-            .catch((err) => {
-                setError(err.message);
-                setLoading(false);
-            });
-    }, []);
+    // useEffect(() => {
+    //     fetch("/api/users")
+    //         .then((res) => {
+    //             if (!res.ok) {
+    //                 throw new Error("Ошибка загрузки данных");
+    //             }
+    //             return res.json();
+    //         })
+    //         .then((data) => {
+    //             setUsers(data);
+    //             setLoading(false);
+    //         })
+    //         .catch((err) => {
+    //             setError(err.message);
+    //             setLoading(false);
+    //         });
+    // }, []);
 
     return (
-        <BrowserRouter>
-            <Header />
-            {/*<div>*/}
-            {/*    <h1>Список пользователей</h1>*/}
-            {/*    {loading && <p>Загрузка...</p>}*/}
-            {/*    {error && <p>Ошибка: {error}</p>}*/}
-            {/*    {!loading && !error && (*/}
-            {/*        <ul>*/}
-            {/*            {users.map((user) => (*/}
-            {/*                <li key={user.id}>*/}
-            {/*                    {user.name} ({user.email})*/}
-            {/*                </li>*/}
-            {/*            ))}*/}
-            {/*        </ul>*/}
-            {/*    )}*/}
-            {/*</div>*/}
-            <Routes>
-                {routes.map((route) => (
-                    <Route key={route.path} path={route.path} element={route.element} />
-                ))}
-            </Routes>
-            <Footer />
-        </BrowserRouter>
+
+            <BrowserRouter>
+                <Header />
+
+                <Routes>
+                    {routes.map((route) => (
+                        <Route key={route.path} path={route.path} element={route.element} />
+                    ))}
+                </Routes>
+                <Footer />
+            </BrowserRouter>
+
     );
 };
 

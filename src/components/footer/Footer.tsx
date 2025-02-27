@@ -5,18 +5,11 @@ import {Link} from "react-router-dom";
 const Footer = () => {
     return (
         <div>
-            <footer className="footer" style={{
-                backgroundColor: '#b5a599',
-                color: 'white',
-                padding: '40px 60px',
-                display: 'flex',
-                justifyContent: 'space-between',
-                flexWrap: 'wrap'
-            }}>
-                <div className="footer-column" style={{flex: '1', minWidth: '200px', marginRight: '20px'}}>
-                    <h3>О компании</h3>
-                    <ul style={{listStyle: 'none', padding: 0}}>
-                        <li><Link to="/careers">Работа и карьера у нас</Link></li>
+            <footer className={styles.footer}>
+                <div className={styles.footer_column}>
+                    <ul>
+                        <li><h3>О компании</h3></li>
+                        <li><Link to="#">Работа и карьера у нас</Link></li>
                         <li><Link to="/contact">Свяжитесь с нами</Link></li>
                         <li><Link to="/contacts">Контакты</Link></li>
                         <li><Link to="/stores">Адреса магазинов</Link></li>
@@ -25,10 +18,9 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Наши услуги */}
-                <div className="footer-column" style={{flex: '1', minWidth: '200px', marginRight: '20px'}}>
-                    <h3>Наши услуги</h3>
-                    <ul style={{listStyle: 'none', padding: 0}}>
+                <div className={styles.footer_column}>
+                    <ul>
+                        <li><h3>Наши услуги</h3></li>
                         <li><Link to="/delivery">Доставка и самовывоз</Link></li>
                         <li><Link to="/payment">Оплата и кредит</Link></li>
                         <li><Link to="/installments">Оплата частями</Link></li>
@@ -39,12 +31,10 @@ const Footer = () => {
                     </ul>
                 </div>
 
-                {/* Социальные сети */}
-                <div className="footer-column" style={{flex: '1', minWidth: '200px'}}>
+                <div className={styles.footer_column}>
                     <h3>Мы в социальных сетях</h3>
                     <div className="social-icons" style={{display: 'flex', gap: '15px', marginTop: '10px'}}>
-                        <Link to="#" aria-label="Facebook"><i className="fab fa-facebook-f"
-                                                              style={{fontSize: '24px', color: 'white'}}></i></Link>
+                        <Link to="#" aria-label="Facebook"> </Link>
                         <Link to="#" aria-label="Twitter"><i className="fab fa-twitter"
                                                              style={{fontSize: '24px', color: 'white'}}></i></Link>
                         <Link to="#" aria-label="Instagram"><i className="fab fa-instagram"

@@ -1,21 +1,28 @@
-import React, {useState} from 'react';
-import styles from './Navbar.module.scss';
-import {Link, NavLink} from "react-router-dom";
-import {CATALOG_ROUTE, HOME_ROUTE} from "@/utils/constants/RouteNames";
-import { HashLink } from 'react-router-hash-link';
+import React, { useState } from "react";
+import styles from "./Navbar.module.scss";
+import { Link } from "react-router-dom";
+import { CATALOG_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from "@/utils/constants/RouteNames";
+import { HashLink } from "react-router-hash-link";
+import ExitIcon from "@/assets/images/icons/outline_exit.svg?react";
+import UserIcon from "@/assets/images/icons/user.svg?react";
+import HeartIcon from "@/assets/images/icons/heart.svg?react";
+import CartIcon from "@/assets/images/icons/outline_shopping_cart_icon.svg?react";
+import { isAuth } from "@/router/routes";
 
-const Navbar = () => {
-    const [search, setSearch] = useState('');
+const Navbar: React.FC = () => {
+    const [search, setSearch] = useState<string>("");
+
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
     };
-    const handleSearchSubmit = (e: React.FormEvent) => {
+
+    const handleSearchSubmit = (e: React.FormEvent<HTMLFormElement>) => {
         e.preventDefault();
         alert(`Вы ввели: ${search}`);
     };
+
     return (
-        <div className={styles.navbar}>
-        <nav>
+        <nav className={styles.navbar}>
             <form className={styles.navbar__search} onSubmit={handleSearchSubmit}>
                 <input
                     type="text"
@@ -24,6 +31,7 @@ const Navbar = () => {
                     onChange={handleSearchChange}
                 />
             </form>
+
             <ul className={styles.navbar__list}>
                 <li><HashLink smooth to="/catalog#collections">Коллекции</HashLink></li>
                 <li><HashLink smooth to="/catalog#furniture">Мебель</HashLink></li>
@@ -31,31 +39,34 @@ const Navbar = () => {
                 <li><HashLink smooth to="/catalog#accessories">Аксессуары</HashLink></li>
                 <li><HashLink smooth to="/catalog#delivery">Доставка</HashLink></li>
             </ul>
-            <ul>
-                <span>Москва</span>
-                <li className="navbar__item">
-                    <Link to={HOME_ROUTE}>
-                        <img src="src/assets/images/icons/user.svg" alt="profile icon" className="navbar__icon"/>
-                    </Link>
-                </li>
 
-                <li className="navbar__item">
-                    <Link to="/catalog">
-                        <img src="src/assets/images/icons/heart.svg" alt="favorite list" className="navbar__icon"/>
-                    </Link>
-                </li>
+            <div className={styles.navbar__right}>
+                <span className={styles.navbar__city}>Москва</span>
 
-                <li className="navbar__item">
-                    <Link to="/cart">
-                        <img src="src/assets/images/icons/outline_shopping_cart_icon.svg" alt="Cart" className="navbar__icon"/>
-                    </Link>
-                </li>
+                <div className={styles.navbar__icons}>
+                    <div className={styles.navbar__item}>
+                        {isAuth ? (
+                            <ExitIcon className={styles.navbar__icon} />
+                        ) : (
+                            <UserIcon className={styles.navbar__icon} />
+                        )}
+                    </div>
 
-            </ul>
+                    <div className={styles.navbar__item}>
+                        <Link to="/catalog">
+                            <HeartIcon className={styles.navbar__icon} />
+                        </Link>
+                    </div>
+
+                    <div className={styles.navbar__item}>
+                        <Link to="/cart">
+                            <CartIcon className={styles.navbar__icon} />
+                        </Link>
+                    </div>
+                </div>
+            </div>
         </nav>
-        </div>
-    )
-        ;
+    );
 };
 
 export default Navbar;
