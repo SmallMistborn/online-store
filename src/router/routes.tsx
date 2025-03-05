@@ -11,7 +11,7 @@ import PrivateRoute from "@/router/PrivateRoute";
 
 import {
     ADMIN_ROUTE, REGISTRATION_ROUTE, ERROR_ROUTE,
-    HOME_ROUTE, LOGIN_ROUTE, CART_ROUTE, CATALOG_ROUTE
+    HOME_ROUTE, LOGIN_ROUTE, CART_ROUTE, CATALOG_ROUTE, REGISTER_ROUTE
 } from "@/utils/constants/RouteNames";
 export const isAuth = false;
 const routes: RouteObject[] = [
@@ -20,6 +20,7 @@ const routes: RouteObject[] = [
     { path: REGISTRATION_ROUTE, element: <PublicRoute><RegisterPage /></PublicRoute> },
     { path: ERROR_ROUTE, element: <PublicRoute><ErrorPage /></PublicRoute> },
     { path: CATALOG_ROUTE, element: <PublicRoute><CatalogPage /></PublicRoute> },
+    {path: REGISTER_ROUTE, element: <PublicRoute><RegisterPage /></PublicRoute>},
     { path: ADMIN_ROUTE, element: <PrivateRoute><AdminPage /></PrivateRoute> },
     { path: CART_ROUTE, element: <PrivateRoute><Cart /></PrivateRoute> },
 

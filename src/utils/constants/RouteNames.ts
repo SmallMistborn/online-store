@@ -5,6 +5,7 @@ export const CART_ROUTE = "/cart"
 export const ERROR_ROUTE = "/error"
 export const HOME_ROUTE = "/"
 export const CATALOG_ROUTE = "/catalog"
+export const REGISTER_ROUTE = "/register"
 // export const PROFILE_ROUTE = "/profile"
 // export const CATALOG_COLLECTIONS_ROUTE = `${CATALOG_ROUTE}#collections`
 // export const CATALOG_FURNITURE_ROUTE = `${CATALOG_ROUTE}#furniture`

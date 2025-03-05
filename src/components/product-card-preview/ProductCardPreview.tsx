@@ -10,7 +10,7 @@ const ProductCardPreview = () => {
     const [furniture, setFurniture] = useState<Furniture[]>([]);
 
     useEffect(() => {
-        fetch("http://localhost:5000/furniture") // Подключаемся к JSON Server
+        fetch("http://localhost:3000/api/furniture") // Подключаемся к JSON Server
             .then((response) => response.json())
             .then((data) => setFurniture(data))
             .catch((error) => console.error("Ошибка загрузки данных:", error));

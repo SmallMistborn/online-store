@@ -1,29 +1,42 @@
-[
-  {
-    "login": "admin",
-    "password": "admin123",
-    "token": "",
-    "isAdmin": true
-  },
-
-  {
-    "login": "asdf",
-    "password": "12345q",
-    "token": "",
-    "isAdmin": false
-  },
-
-  {
-    "login": "misha",
-    "password": "zxc",
-    "token": "",
-    "isAdmin": false
-  },
-
-  {
-    "login": "123",
-    "password": "11223q",
-    "token": "",
-    "isAdmin": false
-  }
-]
+{
+  "users": [
+    {
+      "login": "admin",
+      "password": "admin123",
+      "token": "",
+      "isAdmin": true
+    },
+    {
+      "login": "asdf",
+      "password": "12345q",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "login": "misha",
+      "password": "zxc",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "login": "123",
+      "password": "11223q",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "id": "778d",
+      "login": "vasya",
+      "password": "behonest",
+      "token": "",
+      "isAdmin": false
+    }
+  ],
+  "furniture": [
+    {
+      "id": 1,
+      "title": "barselona",
+      "image": "/images/furniture/barselona.png"
+    }
+  ]
+}

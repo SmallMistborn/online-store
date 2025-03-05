@@ -1,6 +1,6 @@
-// import auth from "./auth";
-//
-// export default {
-//   auth,
-//
-// };
+import auth from "./auth";
+
+export default {
+  auth,
+
+};
