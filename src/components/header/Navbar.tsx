@@ -1,16 +1,22 @@
 import React, { useState } from "react";
 import styles from "./Navbar.module.scss";
-import { Link } from "react-router-dom";
-import { CATALOG_ROUTE, HOME_ROUTE, LOGIN_ROUTE } from "@/utils/constants/RouteNames";
+import {Link, useNavigate} from "react-router-dom";
+import {CART_ROUTE, CATALOG_ROUTE, LOGIN_ROUTE} from "@/utils/constants/RouteNames";
 import { HashLink } from "react-router-hash-link";
 import ExitIcon from "@/assets/images/icons/outline_exit.svg?react";
 import UserIcon from "@/assets/images/icons/user.svg?react";
 import HeartIcon from "@/assets/images/icons/heart.svg?react";
 import CartIcon from "@/assets/images/icons/outline_shopping_cart_icon.svg?react";
-import { isAuth } from "@/router/routes";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import {useActions} from "@/hooks/useActions";
+
 
 const Navbar: React.FC = () => {
     const [search, setSearch] = useState<string>("");
+    const navigate = useNavigate();
+    const { isAuth, user } = useTypedSelector((state) => state.auth);
+    const { login, logout } = useActions();
+
 
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
@@ -20,6 +26,15 @@ const Navbar: React.FC = () => {
         e.preventDefault();
         alert(`Вы ввели: ${search}`);
     };
+
+    const handleLoginButton = () =>{
+        navigate(LOGIN_ROUTE);
+    }
+
+    const handleLogoutButton = () =>{
+        logout();
+        navigate(LOGIN_ROUTE);
+    }
 
     return (
         <nav className={styles.navbar}>
@@ -46,20 +61,21 @@ const Navbar: React.FC = () => {
                 <div className={styles.navbar__icons}>
                     <div className={styles.navbar__item}>
                         {isAuth ? (
-                            <ExitIcon className={styles.navbar__icon} />
+                            <ExitIcon className={styles.navbar__icon} onClick={handleLogoutButton} />
+
                         ) : (
-                            <UserIcon className={styles.navbar__icon} />
+                            <UserIcon className={styles.navbar__icon} onClick={handleLoginButton}/>
                         )}
                     </div>
 
                     <div className={styles.navbar__item}>
-                        <Link to="/catalog">
+                        <Link to={CATALOG_ROUTE}>
                             <HeartIcon className={styles.navbar__icon} />
                         </Link>
                     </div>
 
                     <div className={styles.navbar__item}>
-                        <Link to="/cart">
+                        <Link to={CART_ROUTE}>
                             <CartIcon className={styles.navbar__icon} />
                         </Link>
                     </div>

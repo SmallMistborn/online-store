@@ -13,7 +13,7 @@ import {
     ADMIN_ROUTE, REGISTRATION_ROUTE, ERROR_ROUTE,
     HOME_ROUTE, LOGIN_ROUTE, CART_ROUTE, CATALOG_ROUTE, REGISTER_ROUTE
 } from "@/utils/constants/RouteNames";
-export const isAuth = false;
+
 const routes: RouteObject[] = [
     { path: HOME_ROUTE, element: <HomePage /> },
     { path: LOGIN_ROUTE, element: <PublicRoute><LoginPage /></PublicRoute> },

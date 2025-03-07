@@ -1,5 +1,6 @@
 
-.loginForm__wrapper {
+.registerForm__wrapper {
+
   max-width: 400px;
   width: 100%;
   text-align: center;
@@ -28,6 +29,7 @@
   }
 
   .inputField {
+
     width: 100%;
     padding: 8px;
     border: 1px solid #ccc;
@@ -40,8 +42,7 @@
   }
 
   .submitButton {
-    width: 100px;
-    height: 40px;
+    width: auto;
     padding: 10px;
     background-color: #B3A094;
     color: #fff;

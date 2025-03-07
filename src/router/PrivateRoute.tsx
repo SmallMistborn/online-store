@@ -1,20 +1,15 @@
 
-//TODO: добавить аутентификацию и контекст для нее
-//import { useContext } from 'react';
-//import { AuthContext } from '../context/AuthContext';
-
-import { Navigate, Outlet } from 'react-router-dom';
-import { isAuth } from "@/router/routes";
+import { Navigate} from 'react-router-dom';
 import {LOGIN_ROUTE} from "@/utils/constants/RouteNames";
 import {ReactNode} from "react";
-
+import {useTypedSelector} from "@/hooks/useTypedSelector";
 
 interface PrivateRouteProps {
     children: ReactNode;
 }
 
 const PrivateRoute = ({ children }: PrivateRouteProps) => {
-
+    const { isAuth } = useTypedSelector((state) => state.auth);
     return isAuth ? children : <Navigate to={LOGIN_ROUTE} />;
 };
 

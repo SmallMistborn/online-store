@@ -1,44 +1,30 @@
 import React, { FC, useState } from "react";
 import styles from "./LoginForm.module.scss";
-import {IUser} from "@/models/IUser";
-import {Link} from "react-router-dom";
-import {REGISTER_ROUTE} from "@/utils/constants/RouteNames";
+import {Link, useNavigate} from "react-router-dom";
+import {HOME_ROUTE, REGISTER_ROUTE} from "@/utils/constants/RouteNames";
+import { useTypedSelector } from "@/hooks/useTypedSelector";
+import {useActions} from "@/hooks/useActions";
+
 
 const LoginForm: FC = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [error, setError] = useState("");
+
+    const {login} = useActions()
+    const navigate = useNavigate();
+    const {error} = useTypedSelector((state) => state.auth);
+    const { isAuth } = useTypedSelector((state) => state.auth);
 
     const submitButton = async (e: React.FormEvent) => {
         e.preventDefault();
-
-        try {
-            const response = await fetch("/api/users");
-
-            if (!response.ok) {
-                throw new Error(`Ошибка HTTP: ${response.status}`);
-            }
-
-            const users = await response.json();
-            console.log("Загруженные пользователи:", users);
-
-            const user = users.find((u:IUser) => u.login === username && u.password === password);
-
-            if (user) {
-                alert("Вход выполнен!");
-                localStorage.setItem("token", user.token);
-                setError("");
-            } else {
-                setError("Неверный логин или пароль");
-            }
-
-        } catch (e) {
-            console.error("Ошибка при авторизации:", e);
-            setError("Ошибка сервера. Попробуйте позже.");
+        login(username, password)
+        if(isAuth) {
+            navigate(HOME_ROUTE);
         }
     };
 
     return (
+        <div className={styles.loginForm__wrapper}>
         <form onSubmit={submitButton}>
             {error && <div style={{ color: "red", marginBottom: "10px" }}>{error}</div>}
 
@@ -69,6 +55,7 @@ const LoginForm: FC = () => {
             </button>
             <p>Нет аккаунта? <Link to={REGISTER_ROUTE}>Зарегистрироваться</Link></p>
         </form>
+        </div>
     );
 };
 
