@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, {FC, useEffect, useState} from "react";
 import styles from "./LoginForm.module.scss";
 import {Link, useNavigate} from "react-router-dom";
 import {HOME_ROUTE, REGISTER_ROUTE} from "@/utils/constants/RouteNames";
@@ -10,15 +10,20 @@ const LoginForm: FC = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
-    const {login} = useActions()
+    const {login, clearError} = useActions()
     const navigate = useNavigate();
     const {error} = useTypedSelector((state) => state.auth);
     const { isAuth } = useTypedSelector((state) => state.auth);
+
+    useEffect(() => {
+        clearError();
+    }, []);
 
     const submitButton = async (e: React.FormEvent) => {
         e.preventDefault();
         login(username, password)
         if(isAuth) {
+
             navigate(HOME_ROUTE);
         }
     };

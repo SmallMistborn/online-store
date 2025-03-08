@@ -1,13 +1,88 @@
 {
   "users": [
-    { "id": 1, "name": "Иван", "email": "ivan@example.com" },
-    { "id": 2, "name": "Мария", "email": "maria@example.com" }
+    {
+      "login": "admin",
+      "password": "admin123",
+      "token": "",
+      "isAdmin": true,
+      "id": "c2aa"
+    },
+    {
+      "login": "asdf",
+      "password": "12345q",
+      "token": "",
+      "isAdmin": false,
+      "id": "44b9"
+    },
+    {
+      "login": "misha",
+      "password": "zxc",
+      "token": "",
+      "isAdmin": false,
+      "id": "2a43"
+    },
+    {
+      "login": "123",
+      "password": "11223q",
+      "token": "",
+      "isAdmin": false,
+      "id": "50b1"
+    },
+    {
+      "id": "778d",
+      "login": "vasya",
+      "password": "behonest",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "id": "9392",
+      "login": "ivan",
+      "password": "guy",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "id": "7bc7",
+      "login": "kitty",
+      "password": "890",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "id": "f034",
+      "login": "www",
+      "password": "vk",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "id": "7f38",
+      "login": "er",
+      "password": "2",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "id": "1741",
+      "login": "awd",
+      "password": "awd",
+      "token": "",
+      "isAdmin": false
+    },
+    {
+      "id": "52c8",
+      "login": "ss",
+      "password": "ss",
+      "token": "",
+      "isAdmin": false
+    }
   ],
-  "posts": [
-    { "id": 1, "title": "Пост 1", "content": "Это первый тестовый пост" },
-    { "id": 2, "title": "Пост 2", "content": "Это второй тестовый пост" }
-  ],
-  "auth": {
-    "token": "mock-token-1234"
-  }
+  "furniture": [
+    {
+      "id": "1",
+      "title": "barselona",
+      "image": "/images/furniture/barselona.png"
+    }
+  ]
 }
