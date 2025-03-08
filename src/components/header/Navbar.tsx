@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import styles from "./Navbar.module.scss";
+import styles from "./navbar.module.scss";
 import {Link, useNavigate} from "react-router-dom";
 import {CART_ROUTE, CATALOG_ROUTE, LOGIN_ROUTE} from "@/utils/constants/RouteNames";
 import { HashLink } from "react-router-hash-link";
