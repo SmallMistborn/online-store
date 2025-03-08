@@ -14,10 +14,12 @@ import {useActions} from "@/hooks/useActions";
 const Navbar: React.FC = () => {
     const [search, setSearch] = useState<string>("");
     const navigate = useNavigate();
-    const { isAuth, user } = useTypedSelector((state) => state.auth);
-    const { login, logout } = useActions();
+    const { isAuth } = useTypedSelector((state) => state.auth);
+    const { logout } = useActions();
 
 
+    console.log(typeof ExitIcon);
+    console.log(typeof UserIcon);
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
     };
