@@ -82,7 +82,7 @@
     {
       "id": "1",
       "title": "barselona",
-      "image": "/images/furniture/barselona.png"
+      "image": "src/assets/images/furniture/barselona.png"
     }
   ]
 }
