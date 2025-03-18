@@ -6,14 +6,18 @@ import { useTypedSelector } from "@/hooks/useTypedSelector";
 import {useActions} from "@/hooks/useActions";
 
 
+
 const LoginForm: FC = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
 
     const {login, clearError} = useActions()
+    const { setUser } = useActions();
     const navigate = useNavigate();
+
     const {error} = useTypedSelector((state) => state.auth);
-    const { isAuth } = useTypedSelector((state) => state.auth);
+    const { isAuth, user } = useTypedSelector((state) => state.auth);
+
 
     useEffect(() => {
         clearError();
@@ -22,8 +26,8 @@ const LoginForm: FC = () => {
     const submitButton = async (e: React.FormEvent) => {
         e.preventDefault();
         login(username, password)
-        if(isAuth) {
-
+        if(isAuth && user) {
+            setUser(user.id);
             navigate(HOME_ROUTE);
         }
     };

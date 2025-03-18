@@ -1,13 +1,15 @@
-html, body, #root {
-  height: 100%;
-  margin: 0;
-  padding: 0;
-}
 html, body {
   height: 100%;
   margin: 0;
   display: flex;
   flex-direction: column;
-  color: #333333;
+  color: #333;
   min-height: 100vh;
+  font-family: Arial, sans-serif;
+}
+@media (max-width: 768px) {
+  .container {
+    width: 100%;
+    padding: 0 15px;
+  }
 }

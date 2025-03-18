@@ -10,16 +10,14 @@ import CartIcon from "@/assets/images/icons/outline_shopping_cart_icon.svg?react
 import { useTypedSelector } from "@/hooks/useTypedSelector";
 import {useActions} from "@/hooks/useActions";
 
-
 const Navbar: React.FC = () => {
     const [search, setSearch] = useState<string>("");
     const navigate = useNavigate();
     const { isAuth } = useTypedSelector((state) => state.auth);
     const { logout } = useActions();
+    const {clearCart} = useActions();
 
 
-    console.log(typeof ExitIcon);
-    console.log(typeof UserIcon);
     const handleSearchChange = (e: React.ChangeEvent<HTMLInputElement>) => {
         setSearch(e.target.value);
     };
@@ -34,6 +32,8 @@ const Navbar: React.FC = () => {
     }
 
     const handleLogoutButton = () =>{
+
+        clearCart();
         logout();
         navigate(LOGIN_ROUTE);
     }

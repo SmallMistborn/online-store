@@ -76,13 +76,36 @@
       "password": "ss",
       "token": "",
       "isAdmin": false
+    },
+    {
+      "id": "",
+      "login": "admin123",
+      "password": "123123",
+      "token": "",
+      "isAdmin": false
     }
   ],
   "furniture": [
     {
       "id": "1",
-      "title": "barselona",
-      "image": "/images/furniture/barselona.png"
+      "name": "barselona",
+      "image": "/images/furniture/barselona.png",
+      "price": "673",
+      "amount": "7"
+    },
+    {
+      "id": "2",
+      "name": "barse",
+      "image": "/images/furniture/barselona.png",
+      "price": "600",
+      "amount": "21"
+    },
+    {
+      "id": "3",
+      "name": "lona",
+      "image": "/images/furniture/barselona.png",
+      "price": "6873",
+      "amount": "3"
     }
   ]
 }
