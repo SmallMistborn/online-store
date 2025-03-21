@@ -13,13 +13,26 @@ const ProductCardPreview = () => {
     const cartProducts = useSelector((state: RootState) => state.cart.products);
 
     useEffect(() => {
-        fetch("https://my-json-server.typicode.com/SmallMistborn/mockbackend/furniture")
-            .then((response) => response.json())
-            .then((data) => {
-                console.log("Загруженные данные:", data);
-                setFurniture(data);
+        // fetch("http://localhost:4000/api/furniture")
+        //     .then((response) => response.json())
+        //     .then((data) => {
+        //         console.log("Загруженные данные:", data);
+        //         setFurniture(data);
+        //     })
+        //     .catch((error) => console.error("Ошибка загрузки данных:", error));
+        fetch('/api/data')
+            .then((response) => {
+                if (!response.ok) {
+                    throw new Error('Ошибка сети');
+                }
+                return response.json(); // Парсим JSON из ответа
             })
-            .catch((error) => console.error("Ошибка загрузки данных:", error));
+            .then((data) => {
+                console.log('Данные:', data); // Обрабатываем данные
+            })
+            .catch((error) => {
+                console.error('Ошибка загрузки данных:', error); // Обрабатываем ошибку
+            });
     }, []);
 
 
