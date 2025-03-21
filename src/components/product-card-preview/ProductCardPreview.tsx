@@ -13,7 +13,7 @@ const ProductCardPreview = () => {
     const cartProducts = useSelector((state: RootState) => state.cart.products);
 
     useEffect(() => {
-        fetch("/api/SmallMistborn/mockbackend/furniture")
+        fetch("https://my-json-server.typicode.com/SmallMistborn/mockbackend/furniture")
             .then((response) => response.json())
             .then((data) => {
                 console.log("Загруженные данные:", data);

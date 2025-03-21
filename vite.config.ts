@@ -21,17 +21,14 @@ export default defineConfig({
         loader: 'tsx',
         include: /\.tsx?$/,
     },
-    server: {
-        port: 3000,
-        proxy: {
-            '/api': {
-                target: 'http://localhost:5000',
-                changeOrigin: true,
-                rewrite: (path) => path.replace(/^\/api/, ''),
-            },
-        },
-        headers: {
-            'Content-Security-Policy': "default-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' http://localhost:5000;",
-        },
-    },
+    // server: {
+    //     port: 3000,
+    //     proxy: {
+    //         '/api': {
+    //             target: 'https://my-json-server.typicode.com',
+    //             changeOrigin: true,
+    //             rewrite: (path) => path.replace(/^\/api/, ''),
+    //         },
+    //     },
+    // },
 });
