@@ -49,27 +49,17 @@ export default function cartReducer(
         }
 
         case CartActionEnum.REMOVE_ITEM: {
-            const productId = action.payload;
-            const updatedProducts = { ...state.products };
-            const productToRemove = updatedProducts[productId];
+            const { [action.payload]: productToRemove, ...updatedProducts } = state.products;
 
-            if (!productToRemove) {
-                return state;
-            }
+            if (!productToRemove) return state;
 
-            const updatedTotalQuantity = state.totalQuantity - productToRemove.quantity;
-            const updatedTotalPrice = state.totalPrice - productToRemove.product.price * productToRemove.quantity;
-
-            delete updatedProducts[productId];
-
-            newState = {
+            return {
                 ...state,
                 products: updatedProducts,
                 isEmpty: Object.keys(updatedProducts).length === 0,
-                totalQuantity: updatedTotalQuantity,
-                totalPrice: updatedTotalPrice,
+                totalQuantity: state.totalQuantity - productToRemove.quantity,
+                totalPrice: state.totalPrice - productToRemove.product.price * productToRemove.quantity,
             };
-            break;
         }
 
         case CartActionEnum.CLEAR_CART: {

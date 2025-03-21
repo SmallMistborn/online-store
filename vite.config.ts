@@ -22,24 +22,16 @@ export default defineConfig({
         include: /\.tsx?$/,
     },
     server: {
-        proxy:
-            {
-
-            "/api":
-                {
-                    target: "https://67cd610add7651e464ee3464.mockapi.io",
-                        changeOrigin
-                :
-                    true,
-                        rewrite
-                :
-                    (path) => path.replace(/^\/api/, ""),
-                },
-                "pictures": {
-                    target: "https://i.ibb.co",
-                    changeOrigin: true,
-                    rewrite: (path) => path.replace(/^\/pictures/, ""),
+        port: 3000,
+        proxy: {
+            '/api': {
+                target: 'http://localhost:5000',
+                changeOrigin: true,
+                rewrite: (path) => path.replace(/^\/api/, ''),
             },
+        },
+        headers: {
+            'Content-Security-Policy': "default-src 'self' 'unsafe-inline' 'unsafe-eval'; connect-src 'self' http://localhost:5000;",
         },
     },
 });

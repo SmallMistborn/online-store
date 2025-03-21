@@ -1,10 +1,8 @@
-import { AppDispatch } from "@/store";
+import {AppDispatch, RootState} from "@/store";
 import {
     CartActionEnum,
     AddItemAction,
     ClearCartAction,
-    DecreaseQuantityAction,
-    IncreaseQuantityAction,
     RemoveItemAction,
     SetErrorAction, CartState, SetUserAction, LoadCartAction,
 } from "@/store/reducers/cart/types";
@@ -69,20 +67,57 @@ export const CartActionCreators = {
         dispatch(action);
     },
 
-    increaseQuantity: (productId: number) => (dispatch: AppDispatch) => {
-        const action: IncreaseQuantityAction = {
+    increaseQuantity: (productId: number) => (dispatch: AppDispatch, getState: () => RootState) => {
+        const state = getState().cart;
+        console.log(state);
+
+        if (!state.products) {
+            console.error("Ошибка: state.products не определён.");
+            return;
+        }
+
+        const existingProduct = state.products[productId];
+
+        if (!existingProduct) {
+            console.error(`Ошибка: Продукт с ID ${productId} не найден.`);
+            return;
+        }
+
+        const maxQuantity = existingProduct.product.amount;
+        if (existingProduct.quantity + 1 > maxQuantity) {
+            dispatch(CartActionCreators.setError(`Нельзя добавить больше ${maxQuantity} единиц этого товара.`));
+            return;
+        }
+
+        dispatch({
             type: CartActionEnum.INCREASE_QUANTITY,
             payload: productId,
-        };
-        dispatch(action);
+        });
     },
 
-    decreaseQuantity: (productId: number) => (dispatch: AppDispatch) => {
-        const action: DecreaseQuantityAction = {
-            type: CartActionEnum.DECREASE_QUANTITY,
-            payload: productId,
-        };
-        dispatch(action);
+    decreaseQuantity: (productId: number) => (dispatch: AppDispatch, getState: () => RootState) => {
+        const state = getState().cart;
+
+        if (!state.products) {
+            console.error("Ошибка: state.products не определён.");
+            return;
+        }
+
+        const product = state.products[productId];
+
+        if (!product) {
+            console.error(`Ошибка: Продукт с ID ${productId} не найден.`);
+            return;
+        }
+
+        if (product.quantity === 1) {
+            dispatch(CartActionCreators.removeItemFromCart(productId));
+        } else {
+            dispatch({
+                type: CartActionEnum.DECREASE_QUANTITY,
+                payload: productId,
+            });
+        }
     },
 
     setError: (errorMessage: string) => (dispatch: AppDispatch) => {
@@ -94,77 +129,4 @@ export const CartActionCreators = {
     },
 };
 
-    // export function removeItemFromCart(state: CartState, productId: number): CartState {
-    //     const updatedProducts = {...state.products};
-    //     const productToRemove = updatedProducts[productId];
-    //
-    //     if (!productToRemove) {
-    //         return state;
-    //     }
-    //
-    //     const updatedTotalQuantity = state.totalQuantity - productToRemove.quantity;
-    //     const updatedTotalPrice = state.totalPrice - productToRemove.product.price * productToRemove.quantity;
-    //
-    //     delete updatedProducts[productId];
-    //
-    //     return {
-    //         ...state,
-    //         products: updatedProducts,
-    //         isEmpty: Object.keys(updatedProducts).length === 0,
-    //         totalQuantity: updatedTotalQuantity,
-    //         totalPrice: updatedTotalPrice,
-    //     };
-    // }
-    //
-    // export function clearCart(state: CartState): CartState {
-    //     return {
-    //         isEmpty: true,
-    //         products: {},
-    //         totalPrice: 0,
-    //         totalQuantity: 0,
-    //         user: null,
-    //         error: "",
-    //     };
-    // }
-    //
-    // export function increaseQuantity(state: CartState, productId: number): CartState {
-    //     const updatedProducts = {...state.products};
-    //     const existingProduct = updatedProducts[productId];
-    //
-    //     if (!existingProduct) {
-    //         return state;
-    //     }
-    //
-    //     existingProduct.quantity += 1;
-    //
-    //     return {
-    //         ...state,
-    //         products: updatedProducts,
-    //         totalQuantity: state.totalQuantity + 1,
-    //         totalPrice: state.totalPrice + existingProduct.product.price,
-    //     };
-    // }
-    //
-    // export function decreaseQuantity(state: CartState, productId: number): CartState {
-    //     const updatedProducts = {...state.products};
-    //     const existingProduct = updatedProducts[productId];
-    //
-    //     if (!existingProduct || existingProduct.quantity <= 1) {
-    //         return state;
-    //     }
-    //
-    //     existingProduct.quantity -= 1;
-    //
-    //     return {
-    //         ...state,
-    //         products: updatedProducts,
-    //         totalQuantity: state.totalQuantity - 1,
-    //         totalPrice: state.totalPrice - existingProduct.product.price,
-    //     };
-    // }
-    // export function setError(state: CartState, errorMessage: string): CartState {
-    //     return {
-    //         ...state,
-    //         error: errorMessage,
-    //     };
-    // }
+

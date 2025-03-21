@@ -4,12 +4,11 @@ import { RootState } from "@/store"; // Используем RootState, а не 
 import { ICartItem } from "@/models/ICart";
 
 const Cart = () => {
-    // Получаем корзину из Redux-хранилища
+
     const cart = useSelector((state: RootState) => state.cart.products);
     const totalPrice = useSelector((state: RootState) => state.cart.totalPrice);
     const totalQuantity = useSelector((state: RootState) => state.cart.totalQuantity);
 
-    // Проверка на пустую корзину
     if (!cart || Object.keys(cart).length === 0) {
         return (
             <div>
