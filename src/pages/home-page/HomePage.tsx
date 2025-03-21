@@ -15,7 +15,7 @@ const HomePage = () => {
             <div className={styles.product_hero__wrapper}>
                 <div className={styles.product_hero_img__wrapper}>
                     <img
-                        src="src/assets/images/living_room_png.png"
+                        src="/images/living_room_png.png"
                         alt="banner"
                         className="product_hero__img"
                     />
